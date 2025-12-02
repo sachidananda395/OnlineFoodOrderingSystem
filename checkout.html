@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - FoodieHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation (same as other pages) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Foodie<span>Hub</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="btn btn-outline">Login</button>
+                    <button id="signupBtn" class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="cart" style="padding-top: 120px;">
+        <div class="container">
+            <h1>Checkout</h1>
+            <div class="cart-container">
+                <!-- Left: Address & Payment Form -->
+                <div class="cart-items">
+                    <h3>Delivery Details</h3>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <input type="text" id="fullName" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="address" placeholder="Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="pincode" placeholder="Pincode" required>
+                        </div>
+
+                        <h3 style="margin-top:20px;">Payment Details</h3>
+                        <div class="form-group">
+                            <select id="paymentMethod" required>
+                                <option value="">Select Payment Method</option>
+                                <option value="card">Credit / Debit Card</option>
+                                <option value="cod">Cash on Delivery</option>
+                            </select>
+                        </div>
+
+                        <div id="cardDetails">
+                            <div class="form-group">
+                                <input type="text" id="cardNumber" placeholder="Card Number">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="cardName" placeholder="Name on Card">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="expiry" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="cvv" placeholder="CVV">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+                    </form>
+                </div>
+
+                <!-- Right: Simple Summary text -->
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <p>Your selected items and final total are shown on the previous Cart page.</p>
+                    <p>Please fill your address and payment details to confirm the order.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 FoodieHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple validation for checkout form
+        const checkoutForm = document.getElementById('checkoutForm');
+        const paymentMethod = document.getElementById('paymentMethod');
+        const cardDetails = document.getElementById('cardDetails');
+
+        if (paymentMethod) {
+            paymentMethod.addEventListener('change', () => {
+                if (paymentMethod.value === 'card') {
+                    cardDetails.style.display = 'block';
+                } else {
+                    cardDetails.style.display = 'none';
+                }
+            });
+        }
+
+        if (checkoutForm) {
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Basic empty-field validation is already handled by required attributes.
+                alert('Order placed successfully! (Demo)');
+                window.location.href = 'index.html';
+            });
+        }
+    </script>
+</body>
+</html>
